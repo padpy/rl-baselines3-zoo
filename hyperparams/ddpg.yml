@@ -31,6 +31,32 @@ LunarLanderContinuous-v2:
   learning_rate: !!float 1e-3
   policy_kwargs: "dict(net_arch=[400, 300])"
 
+PandaGrasp-v3:
+  n_timesteps: !!float 1e6
+  policy: 'MultiInputPolicy'
+  gamma: 0.98
+  buffer_size: 200000
+  learning_starts: 10000
+  noise_type: 'normal'
+  noise_std: 0.1
+  gradient_steps: -1
+  train_freq: [1, "episode"]
+  learning_rate: !!float 1e-2
+  policy_kwargs: "dict(net_arch=[400, 300])"
+
+PandaGraspDense-v3:
+  n_timesteps: !!float 1e6
+  policy: 'MultiInputPolicy'
+  gamma: 0.98
+  buffer_size: 200000
+  learning_starts: 10000
+  noise_type: 'normal'
+  noise_std: 0.1
+  gradient_steps: -1
+  train_freq: [1, "episode"]
+  learning_rate: !!float 1e-2
+  policy_kwargs: "dict(net_arch=[400, 300])"
+
 BipedalWalker-v3:
   n_timesteps: !!float 1e6
   policy: 'MlpPolicy'

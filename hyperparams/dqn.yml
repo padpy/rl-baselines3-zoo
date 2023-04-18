@@ -37,17 +37,33 @@ CartPole-v1:
 PandaReachDenseDiscrete-v3:
   n_timesteps: !!float 1e5
   policy: 'MultiInputPolicy'
-  learning_rate: !!float 0.00013500596594616732
+  learning_rate: !!float 0.0011112614647442339
   batch_size: 64
   buffer_size: 50000
   learning_starts: 1000
-  gamma: 0.95
+  gamma: 0.99
   target_update_interval: 5000
-  train_freq: 256
+  train_freq: 8
   gradient_steps: 100
   exploration_fraction: 0.17492366254590996
   exploration_final_eps: 0.1392381728504725
   policy_kwargs: "dict(net_arch=[256, 256])"
+
+# Not Tuned
+PandaReachDenseDiscrete-v4:
+  n_timesteps: !!float 1e5
+  policy: 'MultiInputPolicy'
+  learning_rate: !!float 7.643876040633155e-05
+  batch_size: 64
+  buffer_size: 10000
+  learning_starts: 5000
+  gamma: 0.95
+  target_update_interval: 5000
+  train_freq: 64
+  gradient_steps: 100
+  exploration_fraction: 0.058706276382235315
+  exploration_final_eps: 0.1392381728504725
+  policy_kwargs: "dict(net_arch=[64, 64])"
 
 PandaGraspDenseDiscrete-v3:
   n_timesteps: !!float 1e5
