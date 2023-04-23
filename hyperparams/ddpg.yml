@@ -31,31 +31,131 @@ LunarLanderContinuous-v2:
   learning_rate: !!float 1e-3
   policy_kwargs: "dict(net_arch=[400, 300])"
 
+PandaReach-v4:
+  n_timesteps: !!float 5e5
+  policy: 'MultiInputPolicy'
+  gamma: 0.9
+  batch_size: 128
+  buffer_size: 128
+  learning_starts: 128
+  tau: 0.08
+  noise_type: 'normal'
+  noise_std: 0.44101
+  gradient_steps: -1
+  train_freq: [16, "episode"]
+  learning_rate: !!float 0.00017153298579370132
+  policy_kwargs: "dict(net_arch=[400, 300])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
+
+PandaReachDense-v4:
+  n_timesteps: !!float 5e5
+  policy: 'MultiInputPolicy'
+  gamma: 0.9
+  batch_size: 128
+  buffer_size: 128
+  learning_starts: 128
+  tau: 0.08
+  noise_type: 'normal'
+  noise_std: 0.44101
+  gradient_steps: -1
+  train_freq: [16, "episode"]
+  learning_rate: !!float 0.00017153298579370132
+  policy_kwargs: "dict(net_arch=[400, 300])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
+
 PandaGrasp-v3:
   n_timesteps: !!float 1e6
   policy: 'MultiInputPolicy'
-  gamma: 0.98
-  buffer_size: 200000
-  learning_starts: 10000
+  gamma: 0.9
+  batch_size: 128
+  buffer_size: 10000
+  learning_starts: 128
+  tau: 0.08
   noise_type: 'normal'
-  noise_std: 0.1
+  noise_std: 0.44101
   gradient_steps: -1
-  train_freq: [1, "episode"]
-  learning_rate: !!float 1e-2
+  train_freq: [16, "episode"]
+  learning_rate: !!float 0.00017153298579370132
   policy_kwargs: "dict(net_arch=[400, 300])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
 
 PandaGraspDense-v3:
   n_timesteps: !!float 1e6
   policy: 'MultiInputPolicy'
-  gamma: 0.98
-  buffer_size: 200000
-  learning_starts: 10000
+  gamma: 0.9
+  batch_size: 128
+  buffer_size: 10000
+  learning_starts: 128
+  tau: 0.08
   noise_type: 'normal'
-  noise_std: 0.1
+  noise_std: 0.44101
   gradient_steps: -1
-  train_freq: [1, "episode"]
-  learning_rate: !!float 1e-2
+  train_freq: [16, "episode"]
+  learning_rate: !!float 0.00017153298579370132
   policy_kwargs: "dict(net_arch=[400, 300])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
+
+PandaPickAndPlace-v3:
+  n_timesteps: !!float 1e6
+  policy: 'MultiInputPolicy'
+  gamma: 0.9
+  batch_size: 128
+  buffer_size: 10000
+  learning_starts: 128
+  tau: 0.08
+  noise_type: 'normal'
+  noise_std: 0.44101
+  gradient_steps: -1
+  train_freq: [16, "episode"]
+  learning_rate: !!float 0.00017153298579370132
+  policy_kwargs: "dict(net_arch=[400, 300])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
+
+PandaPickAndPlaceDense-v3:
+  n_timesteps: !!float 1e6
+  policy: 'MultiInputPolicy'
+  gamma: 0.9
+  batch_size: 128
+  buffer_size: 10000
+  learning_starts: 128
+  tau: 0.08
+  noise_type: 'normal'
+  noise_std: 0.44101
+  gradient_steps: -1
+  train_freq: [16, "episode"]
+  learning_rate: !!float 0.00017153298579370132
+  policy_kwargs: "dict(net_arch=[400, 300])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
 
 BipedalWalker-v3:
   n_timesteps: !!float 1e6

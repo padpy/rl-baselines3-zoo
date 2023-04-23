@@ -133,12 +133,89 @@ LunarLanderContinuous-v2:
   n_epochs: 4
   ent_coef: 0.01
 
+PandaReach-v4:
+  normalize: true
+  n_envs: 16
+  n_timesteps: !!float 2e6
+  policy: 'MultiInputPolicy'
+  batch_size: 128
+  n_steps: 16
+  gamma: 0.95
+  gae_lambda: 0.92
+  n_epochs: 10
+  ent_coef: 6.34304166149904e-06
+  sde_sample_freq: 4
+  max_grad_norm: 0.8
+  vf_coef: 0.6009932420293174
+  learning_rate: !!float 0.0009484869109487172
+  use_sde: True
+  clip_range: 0.2
+  policy_kwargs: "dict(log_std_init=-2,
+                       ortho_init=False,
+                       activation_fn=nn.ReLU,
+                       net_arch=dict(pi=[64, 64], vf=[64, 64])
+                       )"
+
+PandaReachDense-v4:
+  normalize: true
+  n_envs: 16
+  n_timesteps: !!float 2e6
+  policy: 'MultiInputPolicy'
+  batch_size: 16
+  n_steps: 16
+  gamma: 0.995
+  gae_lambda: 0.92
+  n_epochs: 5
+  ent_coef: 1.9781116149748122e-07
+  sde_sample_freq: 4
+  max_grad_norm: 0.6
+  vf_coef: 0.6009932420293174
+  learning_rate: !!float 9.901165684397868e-05
+  use_sde: True
+  clip_range: 0.2
+
+PandaGrasp-v3:
+  normalize: true
+  n_envs: 16
+  n_timesteps: !!float 2e6
+  policy: 'MultiInputPolicy'
+  batch_size: 16
+  n_steps: 16
+  gamma: 0.995
+  gae_lambda: 0.92
+  n_epochs: 5
+  ent_coef: 1.9781116149748122e-07
+  sde_sample_freq: 4
+  max_grad_norm: 0.6
+  vf_coef: 0.6009932420293174
+  learning_rate: !!float 9.901165684397868e-05
+  use_sde: True
+  clip_range: 0.2
+
 PandaGraspDense-v3:
   normalize: true
   n_envs: 16
   n_timesteps: !!float 2e6
   policy: 'MultiInputPolicy'
-  batch_size: 512
+  batch_size: 16
+  n_steps: 16
+  gamma: 0.995
+  gae_lambda: 0.92
+  n_epochs: 5
+  ent_coef: 1.9781116149748122e-07
+  sde_sample_freq: 4
+  max_grad_norm: 0.6
+  vf_coef: 0.6009932420293174
+  learning_rate: !!float 9.901165684397868e-05
+  use_sde: True
+  clip_range: 0.2
+
+PandaPickAndPlace-v3:
+  normalize: true
+  n_envs: 16
+  n_timesteps: !!float 2e6
+  policy: 'MultiInputPolicy'
+  batch_size: 16
   n_steps: 16
   gamma: 0.995
   gae_lambda: 0.92
@@ -156,17 +233,18 @@ PandaPickAndPlaceDense-v3:
   n_envs: 16
   n_timesteps: !!float 2e6
   policy: 'MultiInputPolicy'
-  batch_size: 128
-  n_steps: 512
-  gamma: 0.99
-  gae_lambda: 0.9
-  n_epochs: 20
-  ent_coef: 0.0
+  batch_size: 16
+  n_steps: 16
+  gamma: 0.995
+  gae_lambda: 0.92
+  n_epochs: 5
+  ent_coef: 1.9781116149748122e-07
   sde_sample_freq: 4
-  max_grad_norm: 0.5
-  vf_coef: 0.5
-  learning_rate: !!float 3e-5
+  max_grad_norm: 0.6
+  vf_coef: 0.6009932420293174
+  learning_rate: !!float 9.901165684397868e-05
   use_sde: True
+  clip_range: 0.2
 
 # Tuned
 HalfCheetahBulletEnv-v0: &pybullet-defaults

@@ -19,7 +19,7 @@ atari:
 
 # Almost Tuned
 CartPole-v1:
-  n_timesteps: !!float 5e4
+  n_timesteps: !!float 5e5
   policy: 'MlpPolicy'
   learning_rate: !!float 2.3e-3
   batch_size: 64
@@ -28,58 +28,114 @@ CartPole-v1:
   gamma: 0.99
   target_update_interval: 10
   train_freq: 256
-  gradient_steps: 128
+  gradient_steps: 10
   exploration_fraction: 0.16
   exploration_final_eps: 0.04
   policy_kwargs: "dict(net_arch=[256, 256])"
 
 # Not Tuned
-PandaReachDenseDiscrete-v3:
-  n_timesteps: !!float 1e5
-  policy: 'MultiInputPolicy'
-  learning_rate: !!float 0.00005
-  batch_size: 32
-  buffer_size: 10000
-  learning_starts: 0
-  gamma: 0.99
-  target_update_interval: 1000
-  train_freq: 8
-  gradient_steps: 128
-  exploration_fraction: 0.05
-  exploration_initial_eps: 0.10
-  exploration_final_eps: 0.01
-  policy_kwargs: "dict(net_arch=[64, 64])"
-
-# Not Tuned
 PandaReachDenseDiscrete-v4:
-  n_timesteps: !!float 1e5
+  n_timesteps: !!float 5e5
+  policy: 'MultiInputPolicy'
+  learning_rate: !!float 0.00005
+  batch_size: 128
+  buffer_size: 10000
+  learning_starts: 128
+  gamma: 0.99
+  target_update_interval: 1000
+  train_freq: 32
+  gradient_steps: -1
+  exploration_fraction: 0.2
+  exploration_initial_eps: 0.5
+  exploration_final_eps: 0.01
+  policy_kwargs: "dict(net_arch=[256, 256])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
+
+PandaReachDiscrete-v4:
+  n_timesteps: !!float 5e5
   policy: 'MultiInputPolicy'
   learning_rate: !!float 0.00005
   batch_size: 32
   buffer_size: 10000
-  learning_starts: 0
+  learning_starts: 128
   gamma: 0.99
   target_update_interval: 1000
   train_freq: 8
-  gradient_steps: 100
-  exploration_fraction: 0.00
-  exploration_initial_eps: 0.0
-  exploration_final_eps: 0.0
+  gradient_steps: -1
+  exploration_fraction: 0.2
+  exploration_initial_eps: 0.5
+  exploration_final_eps: 0.01
   policy_kwargs: "dict(net_arch=[256, 256])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
+
+PandaGraspDiscrete-v3:
+  n_timesteps: !!float 1e6
+  policy: 'MultiInputPolicy'
+  learning_rate: !!float 0.00005
+  batch_size: 128
+  buffer_size: 50000
+  learning_starts: 128
+  gamma: 0.99
+  target_update_interval: 1000
+  train_freq: 64
+  gradient_steps: -1
+  exploration_fraction: 0.5
+  exploration_initial_eps: 0.5
+  exploration_final_eps: 0.01
+  policy_kwargs: "dict(net_arch=[256, 256])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
 
 PandaGraspDenseDiscrete-v3:
-  n_timesteps: !!float 1e5
+  n_timesteps: !!float 1e6
   policy: 'MultiInputPolicy'
-  learning_rate: !!float 0.00013500596594616732
-  batch_size: 64
+  learning_rate: !!float 0.00005
+  batch_size: 128
   buffer_size: 50000
-  learning_starts: 1000
-  gamma: 0.95
-  target_update_interval: 5000
-  train_freq: 256
-  gradient_steps: 100
-  exploration_fraction: 0.17492366254590996
-  exploration_final_eps: 0.1392381728504725
+  learning_starts: 128
+  gamma: 0.99
+  target_update_interval: 1000
+  train_freq: 64
+  gradient_steps: -1
+  exploration_fraction: 0.5
+  exploration_initial_eps: 0.5
+  exploration_final_eps: 0.01
+  policy_kwargs: "dict(net_arch=[256, 256])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
+
+PandaPickAndPlaceDiscrete-v3:
+  n_timesteps: !!float 1e6
+  policy: 'MultiInputPolicy'
+  learning_rate: !!float 0.00005
+  batch_size: 128
+  buffer_size: 50000
+  learning_starts: 128
+  gamma: 0.99
+  target_update_interval: 1000
+  train_freq: 64
+  gradient_steps: -1
+  exploration_fraction: 0.5
+  exploration_initial_eps: 0.5
+  exploration_final_eps: 0.01
   policy_kwargs: "dict(net_arch=[256, 256])"
   replay_buffer_class: HerReplayBuffer
   replay_buffer_kwargs: "dict(
@@ -89,34 +145,26 @@ PandaGraspDenseDiscrete-v3:
   )"
 
 PandaPickAndPlaceDenseDiscrete-v3:
-  n_timesteps: !!float 1e5
+  n_timesteps: !!float 1e6
   policy: 'MultiInputPolicy'
-  learning_rate: !!float 0.00013500596594616732
-  batch_size: 64
+  learning_rate: !!float 0.00005
+  batch_size: 128
   buffer_size: 50000
-  learning_starts: 1000
-  gamma: 0.95
-  target_update_interval: 5000
-  train_freq: 256
-  gradient_steps: 100
-  exploration_fraction: 0.17492366254590996
-  exploration_final_eps: 0.1392381728504725
+  learning_starts: 128
+  gamma: 0.99
+  target_update_interval: 1000
+  train_freq: 64
+  gradient_steps: -1
+  exploration_fraction: 0.5
+  exploration_initial_eps: 0.5
+  exploration_final_eps: 0.01
   policy_kwargs: "dict(net_arch=[256, 256])"
-
-PandaPickAndPlaceDiscrete-v3:
-  n_timesteps: !!float 1e5
-  policy: 'MultiInputPolicy'
-  learning_rate: !!float 0.00013500596594616732
-  batch_size: 64
-  buffer_size: 50000
-  learning_starts: 1000
-  gamma: 0.95
-  target_update_interval: 5000
-  train_freq: 256
-  gradient_steps: 100
-  exploration_fraction: 0.17492366254590996
-  exploration_final_eps: 0.1392381728504725
-  policy_kwargs: "dict(net_arch=[256, 256])"
+  replay_buffer_class: HerReplayBuffer
+  replay_buffer_kwargs: "dict(
+    online_sampling=True,
+    goal_selection_strategy='future',
+    n_sampled_goal=4
+  )"
 
 # Tuned
 MountainCar-v0:
