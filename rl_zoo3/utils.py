@@ -237,9 +237,11 @@ def create_test_env(
     # panda-gym is based on pybullet, whose rendering requires to be configure at initialization
     if ExperimentManager.is_panda_gym(env_id) and should_render:
         if env_kwargs is None:
-            env_kwargs = {"render": True}
+            # env_kwargs = {"render": True}
+            env_kwargs = {"render_mode": "human"}
         else:
-            env_kwargs["render"] = True
+            # env_kwargs["render"] = True
+            env_kwargs["render_mode"] = "human"
 
     env = make_vec_env(
         env_id,
